@@ -1,0 +1,18 @@
+{
+  "family": "mmui",
+  "name": "mmui",
+  "description": "mmui module.",
+  "version": "1.0.1",
+  "author": {
+    "name": "huangwenping",
+    "email": "huangwenping@maimiaotech.com"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cmd-transport": "~0.2.3",
+    "grunt-cmd-concat": "~0.2.2",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.1"
+  }
+}
