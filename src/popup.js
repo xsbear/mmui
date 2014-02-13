@@ -22,8 +22,7 @@ define(function(require, exports, module) {
 			var o = this.options, $this = this;
 
 			if (o.modal) {
-				this.overlay = new Overlay();
-				this.overlay.show();
+				this.overlay = new Overlay({zIndex:  o.zIndex - 1});
 			}
 
 			var _popup = $('<div class="mm-popup"></div>').appendTo('body').addClass(o.themeClass).css('z-index', o.zIndex);
@@ -50,12 +49,13 @@ define(function(require, exports, module) {
 				}
 				for (var i = 0; i < o.buttons.length; i++) {
 					var iBtn = o.buttons[i];
-					oBtns = {};
+					oBtns = $.extend({
+						classname: 'confirm',
+						trigger: 'click'
+					}, iBtn)
 					if (!iBtn.hasOwnProperty('text')) {
 						for (var key in iBtn) {
 							oBtns.text = key;
-							oBtns.classname = 'confirm';
-							oBtns.trigger = 'click';
 							oBtns.handler = iBtn[key];
 						}
 					}
@@ -83,7 +83,11 @@ define(function(require, exports, module) {
 			}
 			//_popup.css('height', o.height);
 
-			Position.center(_popup);
+            if(this.options.pin){
+                Position.pin(_popup, this.options.pin)
+            } else {
+                Position.center(_popup);
+            }
 
 			this.popuper = _popup;
 		},
@@ -99,9 +103,8 @@ define(function(require, exports, module) {
 			if (this.options.modal) {
 				this.overlay.hide();
 			}
-			//TODO 使用自定义事件方式实现
-			if(this.options.hideHandler){
-				this.options.hideHandler();
+			if(this.options.onHide){
+				this.options.onHide.call(this);
 			}
 		},
 		destroy : function() {
@@ -113,6 +116,9 @@ define(function(require, exports, module) {
 				this.overlay.destroy();
 			}
 			this.$element.removeData('popup');
+			if(this.options.onDestroy){
+				this.options.onDestroy.call(this);
+			}
 		},
 		rePosition: function(){
 			Position.center(this.popuper);

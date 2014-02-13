@@ -8,7 +8,12 @@ define(function(require, exports, module) {
      * ====================== */
     var Loading = function(text,options) {
         this.text = text;
-        this.options = options;
+        var defaults = {
+            zIndex: 1000,
+            opacity: 0.4,
+            indicator: null,
+        }
+        this.options = $.extend(defaults, options);
         this.init();
     };
 
@@ -18,10 +23,12 @@ define(function(require, exports, module) {
         indicator : null,
 
         init: function(){
-            this.overlay = new Overlay();
-            this.overlay.show();
-            this.indicator = $('<div class="mm-loading"><p>'+ this.text +'</p><img src="/static/images/loading-bars.gif"></div>').appendTo('body');
-            Position.center(this.indicator);
+            this.overlay = new Overlay({zIndex:  this.options.zIndex, opacity: this.options.opacity});
+            this.indicator = this.options.indicator || '<div class="mm-loading"><p>'+ this.text +'</p></div>';
+            this.indicator = $(this.indicator).appendTo('body').css('z-index', this.options.zIndex + 1);
+            if(this.options.indicator === null){
+                Position.center(this.indicator);
+            }
         },
 
         hide: function(){

@@ -118,7 +118,7 @@
 .mmpop-aero .ft span.button {
 	display: inline-block;
 	cursor: pointer;
-	margin: 0 10px; 	
+	margin: 0 10px;
 	width:70px;
 	height:25px;
 	text-align:center;
@@ -142,8 +142,8 @@
 	box-shadow:
 		inset 0px 1px 0px rgba(255,255,255,.5),
 		0px 1px 2px rgba(0,0,0,.3);
-	
-	
+
+
 	border:1px solid #5b8821;
 	background: -webkit-linear-gradient(top, #AAD44F 0%,#74B931 90%,#6AAD2D 95%,#609D29 100%);
 	background: -moz-linear-gradient(top, #AAD44F 0%, #74B931 90%, #6AAD2D 95%, #609D29 100%);
@@ -163,7 +163,7 @@
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	border-radius:3px;
-	
+
 	-webkit-box-shadow:
 		inset 0px 1px 0px rgba(255,255,255,.5),
 		0px 1px 2px rgba(0,0,0,.3);
@@ -173,7 +173,7 @@
 	box-shadow:
 		inset 0px 1px 0px rgba(255,255,255,.5),
 		0px 1px 2px rgba(0,0,0,.3);
-	
+
 	background: -webkit-linear-gradient(top, #F5F5F5 0%,#F1F1F1 90%,#E6E6E6 95%,#D2D2D2 100%);
 	background: -moz-linear-gradient(center top, #F5F5F5 0%, #F1F1F1 90%, #E6E6E6 95%, #D2D2D2 100%) repeat scroll 0 0 transparent;
 	background: -o-linear-gradient(top, #F5F5F5 0%,#F1F1F1 90%,#E6E6E6 95%,#D2D2D2 100%);
@@ -188,38 +188,18 @@
 
 /* mm loading */
 .mm-loading {
-	background-color: #FEFEFE;
-    border: 1px solid #CCCCCC;
+    background-color: #FEFEFE;
+    border: 1px solid #aaa;
     padding: 10px 30px;
     position: absolute;
     z-index: 1000;
     text-align: center;
 }
 .mm-loading p {
-	color: #2E780D;
+    background: url("loading-bars.gif") no-repeat scroll center 28px;
+    color: #2E780D;
     font-size: 14px;
     font-style: italic;
-    margin-bottom: 10px;
+    height: 45px;
+    min-width: 100px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

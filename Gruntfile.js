@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       options: {
         debug: false
       },
-      mmui: {
+      cmd: {
         options: {
           idleading: 'lib/<%= pkg.name %>/<%= pkg.version %>/'
         },
@@ -24,12 +24,12 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      mmui: {
+      cmd: {
         options: {
           include: 'relative'
         },
         files: {
-          'dist/mmui.js': ['.build/mmui.js']
+          'dist/mmui_cmd.js': ['.build/mmui_cmd.js']
         }
       }
     },
@@ -39,7 +39,12 @@ module.exports = function(grunt) {
       },
       mmui: {
         files: {
-          'dist/mmui.js': ['dist/mmui.js']
+          'dist/mmui.min.js': ['src/mmui.js']
+        }
+      },
+      cmd: {
+        files: {
+          'dist/mmui_cmd.js': ['dist/mmui_cmd.js']
         }
       }
     },
@@ -48,16 +53,6 @@ module.exports = function(grunt) {
     }
   });
 
-  //
-  grunt.registerTask("d2syb", "Deploy mmui to syb.", function(mode) {
-    var dest = '/Users/hwp/Maimiao/Webpage/shengyb/static/lib/mmui/';
-    if(!grunt.file.isDir(dest, grunt.config('pkg.version'))){
-      grunt.file.mkdir(dest + grunt.config('pkg.version'));
-    }
-    grunt.file.copy('dist/mmui.js', dest + grunt.config('pkg.version') + '/mmui.js');
-
-    grunt.file.copy('src/mmui.css', '/Users/hwp/Maimiao/Webpage/shengyb/static/css/mmui.css');
-  })
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-cmd-transport');
@@ -65,8 +60,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   //grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
-
-  grunt.registerTask('build', ['transport:mmui', 'concat:mmui', 'uglify:mmui', 'clean']);
+  // cmd build
+  grunt.registerTask('cmd', ['transport:cmd', 'concat:cmd', 'uglify:cmd', 'clean']);
   // Default task.
-  grunt.registerTask('default', ['build', 'd2syb']);
+  grunt.registerTask('default', ['uglify:mmui']);
 };

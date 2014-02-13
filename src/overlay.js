@@ -7,25 +7,28 @@ define(function(require, exports, module) {
     /* Overlay CLASS DEFINITION
      * ====================== */
     var Overlay = function(options) {
-        this.options = options;
+        var defaults = {
+            zIndex: 499,
+            opacity: 0.4,
+        }
+        this.options = $.extend(defaults, options);
+        this. init();
     }
 
     Overlay.prototype = {
         overlayer : null,
         masklayer : null,
-        show : function() {
-            if (this.overlayer) {
-                this.overlayer.show();
-                if (this.masklayer) {
-                    this.masklayer.show();
-                }
-            } else {
-                this.overlayer = $('<div id="dm_window_overlay"></div>').appendTo('body');
-                if (isIE6) {
-                    this.masklayer = $('<iframe id="dm_window_selectmask" frameborder="0" />').appendTo('body');
-                }
+        init: function() {
+            this.overlayer = $('<div id="dm_window_overlay"></div>').appendTo('body').css({'z-index': this.options.zIndex, 'opacity': this.options.opacity});
+            if (isIE6) {
+                this.masklayer = $('<iframe id="dm_window_selectmask" frameborder="0" />').appendTo('body').css('z-index', this.options.zIndex - 1);
             }
-
+        },
+        show : function() {
+            this.overlayer.show();
+            if (this.masklayer) {
+                this.masklayer.show();
+            }
         },
         hide : function() {
             this.overlayer.hide();
