@@ -2,29 +2,29 @@
  * mmui style
  */
 #dm_window_overlay {
-        position: fixed;
-        z-index:499;
-        top: 0px;
-        left: 0px;
-        height:100%;
-        width:100%;
-        background-color:#fff;
-        filter:alpha(opacity=40);
-        -moz-opacity: 0.4;
-        opacity: 0.4;
+    position: fixed;
+    z-index:499;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background-color:#fff;
+    filter:alpha(opacity=40);
+    -moz-opacity: 0.4;
+    opacity: 0.4;
 }
 #dm_window_selectmask {
-        z-index:99;
-        position:absolute;
-        top: 0;
-        left: 0;
-        background-color:#fff;
-        border:none;
-        filter:alpha(opacity=0);
-        -moz-opacity: 0;
-        opacity: 0;
-        height:100%;
-        width:100%;
+    z-index:99;
+    position:absolute;
+    top: 0;
+    left: 0;
+    background-color:#fff;
+    border:none;
+    filter:alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    height:100%;
+    width:100%;
 }
 * html #dm_window_overlay, * html #dm_window_selectmask { /* ie6 hack */
      position: absolute;

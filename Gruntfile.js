@@ -18,19 +18,9 @@ module.exports = function(grunt) {
         },
         files: [{
           cwd: 'src',
-          src: '*.js',
+          src: 'mmui.js',
           dest: '.build'
         }]
-      }
-    },
-    concat: {
-      cmd: {
-        options: {
-          include: 'relative'
-        },
-        files: {
-          'dist/mmui_cmd.js': ['.build/mmui_cmd.js']
-        }
       }
     },
     uglify: {
@@ -39,13 +29,28 @@ module.exports = function(grunt) {
       },
       mmui: {
         files: {
-          'dist/mmui.min.js': ['src/mmui.js']
+          'dist/<%= pkg.version %>/mmui.js': ['.build/mmui.js']
         }
-      },
-      cmd: {
+      }
+    },
+    cssmin:{
+      mmui: {
+        options: {
+          banner: '<%= banner %>'
+        },
         files: {
-          'dist/mmui_cmd.js': ['dist/mmui_cmd.js']
+          'dist/<%= pkg.version %>/mmui.css': ['src/mmui.css']
         }
+      }
+    },
+    copy: {
+      debug: {
+        src: 'src/mmui.js',
+        dest: 'dist/<%= pkg.version %>/mmui-debug.js',
+      },
+      img: {
+        src: 'src/loading-bars.gif',
+        dest: 'dist/<%= pkg.version %>/loading-bars.gif',
       }
     },
     clean: {
@@ -56,12 +61,10 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-cmd-transport');
-  grunt.loadNpmTasks('grunt-cmd-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  //grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  // cmd build
-  grunt.registerTask('cmd', ['transport:cmd', 'concat:cmd', 'uglify:cmd', 'clean']);
   // Default task.
-  grunt.registerTask('default', ['uglify:mmui']);
+  grunt.registerTask('default', ['transport', 'uglify', 'cssmin', 'copy', 'clean']);
 };

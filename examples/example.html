@@ -3,17 +3,18 @@
    <head>
         <meta charset="UTF-8">
         <title>mmui examples</title>
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type="text/javascript" src="../src/mmui.js"></script>
-        <link rel="stylesheet" href="../src/mmui.css">
+        <link rel="stylesheet" href="../dist/1.1.0/mmui.css">
         <style>
             .container {
-                margin-top: 100px;
+                margin-top: 20px;
                 margin-left: 300px;
                 border: 1px solid #999;
                 position: relative;
                 width: 500px;
                 height: 400px;
+            }
+            #submit {
+                margin-top: 200px;
             }
         </style>
     </head>
@@ -22,19 +23,22 @@
         <div class="container mm-popup">
             <button id="submit">popup</button>
         </div>
-
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="../dist/1.1.0/mmui.js"></script>
         <script type="text/javascript">
             $(function() {
-                // var loading = new mmui.Loading('', {
-                //     opacity: 0,
-                //     indicator: '<div class="top-loading">正在加载</div>'
-                // })
+                var loading = new mmui.Loading('正在加载', {
+                    // opacity: 0,
+                    // indicator: '<div class="mm-loading">正在加载</div>'
+                })
 
                 $('#submit').click(function(e){
 
                     $('<div style="width:400px;height:300px;padding:20px;">xxxxxx</div>').Popup({
                         title: "网页对话框",
                         modal: true,
+                        width: 300,
+                        height: 200,
                         zIndex: 600,
                         pin: {
                             elem:  $('#submit'),
