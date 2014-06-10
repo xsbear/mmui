@@ -5,8 +5,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-          '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
+    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> */',
     // Task configuration.
     transport: {
       options: {
@@ -25,7 +24,7 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>\n'
       },
       mmui: {
         files: {

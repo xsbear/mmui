@@ -1,4 +1,4 @@
-// MMUI v1.0.8
+// MMUI v1.1.0
 
 (function(global, factory){
     // Set up mmui appropriately for the environment.
@@ -331,8 +331,6 @@
             show : true,
             modal : false,
             themeClass : 'mmpop-aero',
-            position : null,
-            posTarget : null,
             title : '',
             closeIcon: true,
             zIndex: 500,
