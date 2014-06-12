@@ -1,7 +1,7 @@
 MMUI
 ====
 
-A minimum ui library from maimiaotech
+A minimal ui library from maimiaotech
 
 ## Position
 简单定位工具
